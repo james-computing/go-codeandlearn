@@ -76,9 +76,10 @@ func example3() {
 }
 
 func example4() {
-	// buffered channel, can write to it n times before blocking
+	// buffered channel, only blocks after receiving n+1 values
 	const n int = 2
 	stringChannel := make(chan string, n)
+	// receive n values, which doesn't block
 	stringChannel <- "hello"
 	stringChannel <- "world"
 	fmt.Println(<-stringChannel)
